@@ -11,7 +11,9 @@ from util import *
 # Prepare data
 data = np.loadtxt('linsep.dat')  # 'linsep.dat' / 'and.dat' / 'or.dat' / 'xor.dat'
 inputs = data[:, :-1]
+print("Inputs: ", inputs)
 targets = data[:, -1].astype(int)
+print("Targets: ", targets)
 (count, dim) = inputs.shape
 
 # # Plot input data

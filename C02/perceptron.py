@@ -10,7 +10,7 @@ class Perceptron:
     def __init__(self, dim):
         self.dim = dim
         rng = np.random.default_rng()
-        self.weights = rng.standard_normal(dim)  # FIXME
+        self.weights = rng.standard_normal(self.dim + 1)  # FIXME
 
     def train(self, inputs, targets, alpha=0.1, eps=20, live_plot=False):
         if live_plot:
@@ -29,13 +29,13 @@ class Perceptron:
                 x = add_bias(inputs[idx])  # FIXME - input with bias
                 d = targets[idx]             # FIXME
 
-                net = self.weights @ x # FIXME integer
-                y = 1 if net >= 0 else 0             # FIXME integer
+                net = self.weights[idx] * x # FIXME integer
+                y = 1 if net >= 0 else 0  # FIXME integer
 
-                e = d - y            # FIXME - error on current input
+                e = (d - y)            # FIXME - error on current input
                 overall_error += e**2 / 2.0
 
-                self.weights += aplha * e * x  # FIXME
+                self.weights += alpha * e * x  # FIXME
 
             errors.append(overall_error)
             print('E = {:.3f}'.format(overall_error))
