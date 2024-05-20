@@ -22,18 +22,15 @@ labels = data[-1].astype(int) - 1  # last column is class, starts from 0
 # remaining 20% will be used for testing
 
 # following is a mere suggestion of how you can achieve it, feel free to implement your own way:
-indices = None        # FIXME
-random.shuffle(indices)
-split = None          # FIXME
-train_indices = None  # FIXME
-test_indices = None   # FIXME
+indices = numpy.random.permutation(inputs.shape[0])
+training_idx, test_idx = indices[:80], indices[80:]
 # /suggestion
 
-train_inputs = None  # FIXME
-train_labels = None  # FIXME
+train_inputs = inputs[trainig_idx]  # FIXME
+train_labels = labels[trainig_idx]  # FIXME
 
-test_inputs = None   # FIXME
-test_labels = None   # FIXME
+test_inputs = inputs[test_idx]   # FIXME
+test_labels = inputs[train_idx]   # FIXME
 
 # Plot data before training
 plot_dots(train_inputs, train_labels, None, test_inputs, test_labels, None)

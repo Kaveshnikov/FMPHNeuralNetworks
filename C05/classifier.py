@@ -17,9 +17,13 @@ class MLPClassifier(MLP):
 
         return np.sum((targets - outputs)**2, axis=0)
 
+    @staticmethod
+    def sigmoid(x):
+        return 1.0 / (1.0 + np.exp(-x))    
+
     # @override
     def f_hid(self, x):
-        return 0  # FIXME sigmoid (or tanh, relu, ...)
+        return self.sigmoid(x)  # FIXME sigmoid (or tanh, relu, ...)
 
     # @override
     def df_hid(self, x):
@@ -27,11 +31,11 @@ class MLPClassifier(MLP):
 
     # @override
     def f_out(self, x):
-        return 0  # FIXME sigmoid
+        return self.sigmoid(x)  # FIXME sigmoid
 
     # @override
     def df_out(self, x):
-        return 0  # FIXME corresponding derivation
+        return   # FIXME corresponding derivation
 
     def predict(self, inputs):
         """
